@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg">
+
+
+    <FrameLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navigateTabBar"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/main_navigate_tab_bar_height"
+        android:background="@mipmap/comui_bar_top_shadow"/>
+
+
+    <com.startsmake.mainnavigatetabbar.widget.MainNavigateTabBar
+        android:id="@+id/navigateTabBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_navigate_tab_bar_height"
+        android:layout_alignParentBottom="true"
+        app:navigateTabSelectedTextColor="@color/colorPrimary"
+        app:navigateTabTextColor="@color/tab_text_normal"/>
+
+</RelativeLayout>

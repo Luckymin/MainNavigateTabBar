@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MainNavigateTabBar</string>
+
+    <string name="tab_bar_text_home">我的APP</string>
+    <string name="tab_bar_text_moments">圈子</string>
+    <string name="tab_bar_text_find">发现</string>
+    <string name="tab_bar_text_person">个人中心</string>
+</resources>
