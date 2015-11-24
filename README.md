@@ -1,7 +1,7 @@
 # MainNavigateTabBar
 可快速实现Tab标签选项功能
 
-![](http://7xnnm7.com1.z0.glb.clouddn.com/klteznLRX21Tshine11242015160712.png)
+![](http://7xnnm7.com1.z0.glb.clouddn.com/2015-11-24%2016_58_00.gif)
 
 ##使用
 在xml中定义:
@@ -44,9 +44,7 @@ public class MainActivity extends AppCompatActivity {
         navigateTabBar.addTab(HomeFragment.class, new MainNavigateTabBar.TabParam(R.mipmap.ic_tab_bar_home, R.mipmap.ic_tab_bar_mine_selected, R.string.tab_bar_text_home));
         navigateTabBar.addTab(MomentsFragment.class, new MainNavigateTabBar.TabParam(R.mipmap.ic_tab_bar_moments, R.mipmap.ic_tab_bar_moments_selected, R.string.tab_bar_text_moments));
         navigateTabBar.addTab(FindFragment.class, new MainNavigateTabBar.TabParam(R.mipmap.ic_tab_bar_find, R.mipmap.ic_tab_bar_find_selected, R.string.tab_bar_text_find));
-        navigateTabBar.addTab(PersonFragment.class, new MainNavigateTabBar.TabParam(R.mipmap.ic_tab_bar_person, R.mipmap.ic_tab_bar_person_selected, R.string.tab_bar_text_person));
-
-        
+        navigateTabBar.addTab(PersonFragment.class, new MainNavigateTabBar.TabParam(R.mipmap.ic_tab_bar_person, R.mipmap.ic_tab_bar_person_selected, R.string.tab_bar_text_person));   
     }
 
 
