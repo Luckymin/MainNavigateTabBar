@@ -3,6 +3,7 @@
     <declare-styleable name="MainNavigateTabBar">
         <attr name="navigateTabTextColor" format="color|reference"/>
         <attr name="navigateTabSelectedTextColor" format="color|reference"/>
+        <attr name="containerId" format="integer|reference"/>
     </declare-styleable>
 
 </resources>

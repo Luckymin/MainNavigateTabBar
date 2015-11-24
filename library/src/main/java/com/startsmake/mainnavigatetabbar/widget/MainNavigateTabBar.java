@@ -60,6 +60,8 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
         ColorStateList tabTextColor = typedArray.getColorStateList(R.styleable.MainNavigateTabBar_navigateTabTextColor);
         ColorStateList selectedTabTextColor = typedArray.getColorStateList(R.styleable.MainNavigateTabBar_navigateTabSelectedTextColor);
 
+        mMainContentLayoutId = typedArray.getResourceId(R.styleable.MainNavigateTabBar_containerId, 0);
+
         mNormalTextColor = (tabTextColor != null ? tabTextColor : context.getResources().getColorStateList(R.color.tab_text_normal));
 
 
@@ -78,9 +80,9 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
 
     public void addTab(Class frameLayoutClass, TabParam tabParam) {
         int defaultLayout = R.layout.comui_tab_view;
-        if (tabParam.tabViewResId > 0) {
-            defaultLayout = tabParam.tabViewResId;
-        }
+//        if (tabParam.tabViewResId > 0) {
+//            defaultLayout = tabParam.tabViewResId;
+//        }
         if (TextUtils.isEmpty(tabParam.title)) {
             tabParam.title = getContext().getString(tabParam.titleStringRes);
         }
@@ -139,8 +141,8 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
 
         ViewHolder defaultHolder = null;
 
+        hideAllFragment();
         if (!TextUtils.isEmpty(mRestoreTag)) {
-            hideAllFragment();
             for (ViewHolder holder : mViewHolderList) {
                 if (TextUtils.equals(mRestoreTag, holder.tag)) {
                     defaultHolder = holder;
@@ -302,8 +304,8 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
         public int backgroundColor = android.R.color.white;
         public int iconResId;
         public int iconSelectedResId;
-        public int tabViewResId;
         public int titleStringRes;
+//        public int tabViewResId;
         public String title;
 
         public TabParam(int iconResId, int iconSelectedResId, String title) {
@@ -318,19 +320,17 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
             this.titleStringRes = titleStringRes;
         }
 
-        public TabParam(int backgroundColor, int iconResId, int iconSelectedResId, int tabViewResId, int titleStringRes) {
+        public TabParam(int backgroundColor, int iconResId, int iconSelectedResId, int titleStringRes) {
             this.backgroundColor = backgroundColor;
             this.iconResId = iconResId;
             this.iconSelectedResId = iconSelectedResId;
-            this.tabViewResId = tabViewResId;
             this.titleStringRes = titleStringRes;
         }
 
-        public TabParam(int backgroundColor, int iconResId, int iconSelectedResId, int tabViewResId, String title) {
+        public TabParam(int backgroundColor, int iconResId, int iconSelectedResId, String title) {
             this.backgroundColor = backgroundColor;
             this.iconResId = iconResId;
             this.iconSelectedResId = iconSelectedResId;
-            this.tabViewResId = tabViewResId;
             this.title = title;
         }
     }
