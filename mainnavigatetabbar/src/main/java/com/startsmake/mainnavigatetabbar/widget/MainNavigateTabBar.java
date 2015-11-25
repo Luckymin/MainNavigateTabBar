@@ -43,6 +43,8 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
     private ColorStateList mSelectedTextColor;
     /*正常的Tab文字颜色*/
     private ColorStateList mNormalTextColor;
+    /*Tab文字的颜色*/
+    private float mTabTextSize;
 
     public MainNavigateTabBar(Context context) {
         this(context, null);
@@ -60,6 +62,7 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
         ColorStateList tabTextColor = typedArray.getColorStateList(R.styleable.MainNavigateTabBar_navigateTabTextColor);
         ColorStateList selectedTabTextColor = typedArray.getColorStateList(R.styleable.MainNavigateTabBar_navigateTabSelectedTextColor);
 
+        mTabTextSize = typedArray.getDimensionPixelSize(R.styleable.MainNavigateTabBar_navigateTabTextSize, 0);
         mMainContentLayoutId = typedArray.getResourceId(R.styleable.MainNavigateTabBar_containerId, 0);
 
         mNormalTextColor = (tabTextColor != null ? tabTextColor : context.getResources().getColorStateList(R.color.tab_text_normal));
@@ -103,6 +106,13 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
             holder.tabTitle.setVisibility(View.INVISIBLE);
         } else {
             holder.tabTitle.setText(tabParam.title);
+        }
+
+        if (mTabTextSize != 0) {
+            holder.tabTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTabTextSize);
+        }
+        if (mNormalTextColor != null) {
+            holder.tabTitle.setTextColor(mNormalTextColor);
         }
 
         if (tabParam.backgroundColor > 0) {
@@ -305,7 +315,7 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
         public int iconResId;
         public int iconSelectedResId;
         public int titleStringRes;
-//        public int tabViewResId;
+        //        public int tabViewResId;
         public String title;
 
         public TabParam(int iconResId, int iconSelectedResId, String title) {
