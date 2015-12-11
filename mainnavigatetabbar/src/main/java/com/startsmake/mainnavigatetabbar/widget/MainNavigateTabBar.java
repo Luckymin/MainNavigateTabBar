@@ -45,6 +45,10 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
     private ColorStateList mNormalTextColor;
     /*Tab文字的颜色*/
     private float mTabTextSize;
+    /*默认选中的tab index*/
+    private int mDefaultSelectedTab = 0;
+
+    private int mCurrentSelectedTab;
 
     public MainNavigateTabBar(Context context) {
         this(context, null);
@@ -94,6 +98,8 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
         view.setFocusable(true);
 
         ViewHolder holder = new ViewHolder();
+
+        holder.tabIndex = mViewHolderList.size();
 
         holder.fragmentClass = frameLayoutClass;
         holder.tag = tabParam.title;
@@ -161,7 +167,7 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
                 }
             }
         } else {
-            defaultHolder = mViewHolderList.get(0);
+            defaultHolder = mViewHolderList.get(mDefaultSelectedTab);
         }
 
         showFragment(defaultHolder);
@@ -198,8 +204,8 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
         } else {
             transaction.show(fragment);
         }
-
         transaction.commit();
+        mCurrentSelectedTab = holder.tabIndex;
     }
 
     private boolean isFragmentShown(FragmentTransaction transaction, String newTag) {
@@ -307,6 +313,7 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
         public ImageView tabIcon;
         public TextView tabTitle;
         public Class fragmentClass;
+        public int tabIndex;
     }
 
 
@@ -353,4 +360,24 @@ public class MainNavigateTabBar extends LinearLayout implements View.OnClickList
     public void setTabSelectListener(OnTabSelectedListener tabSelectListener) {
         mTabSelectListener = tabSelectListener;
     }
+
+    public void setDefaultSelectedTab(int index) {
+        if (index >= 0 && index < mViewHolderList.size()) {
+            mDefaultSelectedTab = index;
+        }
+    }
+
+    public void setCurrentSelectedTab(int index) {
+        if (index >= 0 && index < mViewHolderList.size()) {
+            ViewHolder holder = mViewHolderList.get(index);
+            showFragment(holder);
+        }
+    }
+
+    public int getCurrentSelectedTab(){
+        return mCurrentSelectedTab;
+    }
+
+
+
 }
