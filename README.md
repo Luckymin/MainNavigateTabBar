@@ -3,6 +3,17 @@
 
 ![](http://7xnnm7.com1.z0.glb.clouddn.com/2015-11-24%2016_58_00.gif)
 
+##添加到工程
+
+```
+dependencies {
+  compile 'com.startsmake:mainnavigatetabbar:1.1.0'
+}
+```
+
+##Fragment
+仅支持android.app.Fragment
+
 ##使用
 在xml中定义:
 
